@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+        integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
+        crossorigin="anonymous"></script>
+        <link rel="shortcut icon" href="{% static 'regex/logo.png' %}" type="image/x-icon">
+    <title>Doctor ReGex</title>
+    
+</head>
+<body>
+    <nav class="navbar" style="background-color: rgba(184, 124, 46, 0.5);">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <h1><img src="{% static 'regex/logo.png' %}" alt="" width="60" height="60" class="d-inline-block align-text-top">
+                Doctor ReGex</h1>
+            </a>5
+        </div>
+    </nav>
+    <br><br><br>
+    <div class="container">
+        
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="regex"> Enter the regex here: </label>
+                <input  class ="form-control" type="text" name="regex" id="regex">
+            </div>
+            <div class="mb-3">
+                <label for="string">Enter the string in to apply the regex to: </label><br>
+                <textarea  class="form-control" name="string" id="string" rows="3" aria-colcount="5"> </textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-outline-dark btn-lg">Check</button>
+        </form> <br><br>
+        <div class="mb-3">
+            <label for="output">Output:</label>
+            <textarea class="form-control" name="output" id="output" readonly>{% if msg != None %}{{msg.span}} {% else %} {{msg}} {% endif %}</textarea>
+        </div>
+    </div>
+    
+</body>
+</html>
